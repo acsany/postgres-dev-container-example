@@ -1,0 +1,30 @@
+{
+  "name": "hello-postgres",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "dracula-theme.theme-dracula",
+      ],
+      "settings": {
+        "workbench.colorTheme": "Dracula Theme",
+        "sqltools.connections": [
+          {
+            "name": "Development DB",
+            "driver": "PostgreSQL",
+            "server": "${localEnv:PG_HOST}",
+            "port": 5432,
+            "database": "${localEnv:PGDATABASE}",
+            "username": "${localEnv:PGUSER}",
+            "password": "${localEnv:PGPASSWORD}"
+          }
+        ]
+      }
+    }
+  },
+  "forwardPorts": [5432]
+}
